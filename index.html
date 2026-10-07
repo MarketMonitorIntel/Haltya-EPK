@@ -1,0 +1,387 @@
+<title>Haltya & EvsY</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Literata:ital,opsz,wght@0,16..30,400;0,16..30,500;0,16..30,600;1,16..30,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root{
+    --bg:#F3EEE1;
+    --surface:#FBF7EC;
+    --ink:#1D1A23;
+    --ink-soft:#56506C;
+    --accent:#A8691E;
+    --accent-ink:#5A3E12;
+    --sage:#3F5D43;
+    --line:#DDD1B8;
+    --radius:3px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#121018;
+      --surface:#1A1724;
+      --ink:#EFE9F7;
+      --ink-soft:#B3AAC9;
+      --accent:#E3A94A;
+      --accent-ink:#F4D79A;
+      --sage:#86AE88;
+      --line:#2D2740;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#121018;
+    --surface:#1A1724;
+    --ink:#EFE9F7;
+    --ink-soft:#B3AAC9;
+    --accent:#E3A94A;
+    --accent-ink:#F4D79A;
+    --sage:#86AE88;
+    --line:#2D2740;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Literata', Georgia, 'Times New Roman', serif;
+    font-size:17px;
+    line-height:1.6;
+    padding-inline:24px;
+    padding-block:0;
+  }
+  a{color:var(--accent-ink);text-decoration-thickness:1px;text-underline-offset:3px;}
+  a:hover{color:var(--sage);}
+  .wrap{max-width:760px;margin:0 auto;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding-block:72px 40px;
+    border-bottom:1px solid var(--line);
+    position:relative;
+  }
+  .hero-bg{
+    position:absolute; inset:0; top:0; height:100%; width:100%;
+    pointer-events:none; opacity:.55; z-index:0;
+  }
+  .hero-inner{position:relative; z-index:1;}
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--sage);
+    margin:0 0 18px;
+  }
+  h1{
+    font-family:'Unbounded', 'Arial Black', sans-serif;
+    font-weight:800;
+    font-size:clamp(2.2rem, 7vw, 3.6rem);
+    line-height:1.02;
+    letter-spacing:-.01em;
+    margin:0 0 14px;
+    text-wrap:balance;
+  }
+  .tagline{
+    font-size:1.15rem;
+    color:var(--ink-soft);
+    max-width:46ch;
+    margin:0 0 28px;
+  }
+  .linkrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    display:flex; flex-wrap:wrap; gap:4px 14px;
+    color:var(--ink-soft);
+  }
+  .linkrow a{color:var(--ink);}
+  .linkrow span.sep{color:var(--line);}
+
+  /* ---------- sections ---------- */
+  section{padding-block:40px; border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  h2{
+    font-family:'Unbounded', sans-serif;
+    font-weight:600;
+    font-size:1.5rem;
+    letter-spacing:-.005em;
+    margin:0 0 20px;
+    text-wrap:balance;
+  }
+  h3{
+    font-family:'Unbounded', sans-serif;
+    font-weight:600;
+    font-size:1.05rem;
+    margin:28px 0 10px;
+  }
+  p{margin:0 0 14px; max-width:65ch;}
+  .lede{font-size:1.08rem; color:var(--ink);}
+
+  /* ---------- record block ---------- */
+  .record-meta{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    color:var(--ink-soft);
+    margin-bottom:18px;
+    display:flex; flex-wrap:wrap; gap:4px 18px;
+  }
+  ol.tracklist{
+    list-style:none; counter-reset:track;
+    padding:0; margin:0 0 20px;
+    border-top:1px solid var(--line);
+  }
+  ol.tracklist li{
+    counter-increment:track;
+    display:flex; align-items:baseline; gap:14px;
+    padding:9px 0;
+    border-bottom:1px solid var(--line);
+    font-size:.98rem;
+  }
+  ol.tracklist li::before{
+    content:counter(track, decimal-leading-zero);
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--sage);
+    flex:0 0 auto;
+  }
+  .credits-line{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    color:var(--ink-soft);
+    line-height:1.7;
+  }
+
+  /* ---------- achievements ---------- */
+  .achieve{
+    border-left:2px solid var(--accent);
+    padding-left:18px;
+    font-size:1.02rem;
+  }
+  .achieve b{color:var(--accent-ink);}
+
+  /* ---------- bios ---------- */
+  .bios{
+    display:grid; grid-template-columns:1fr; gap:36px;
+  }
+  @media (min-width:620px){
+    .bios{grid-template-columns:1fr 1fr; gap:40px;}
+  }
+  .bio h3{margin-top:0;}
+  .bio-years{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--sage);
+    letter-spacing:.06em;
+    margin-bottom:10px;
+    display:block;
+  }
+  .side-project{
+    margin-top:18px;
+    padding-top:14px;
+    border-top:1px dashed var(--line);
+    font-size:.94rem;
+  }
+  .side-project .label{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--sage);
+    display:block;
+    margin-bottom:6px;
+  }
+
+  /* ---------- tags / touring ---------- */
+  .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:6px;}
+  .tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    padding:5px 10px;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    color:var(--ink-soft);
+  }
+
+  /* ---------- watch ---------- */
+  .watch-list{
+    display:flex; flex-direction:column; gap:10px;
+  }
+  .watch-item{
+    display:flex; align-items:center; gap:12px;
+    padding:12px 14px;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    font-size:.95rem;
+  }
+  .watch-kind{
+    font-family:'JetBrains Mono', monospace;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--sage);
+    border:1px solid var(--sage);
+    border-radius:2px;
+    padding:2px 6px;
+    flex:0 0 auto;
+  }
+
+  /* ---------- footer / contact ---------- */
+  footer{
+    padding-block:40px 64px;
+  }
+  .contact-card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:26px 28px;
+  }
+  .contact-card h3{margin-top:0;}
+  .contact-row{
+    font-family:'JetBrains Mono', monospace;
+    font-size:14px;
+    margin-top:12px;
+    display:flex; flex-direction:column; gap:4px;
+  }
+  .note{
+    margin-top:18px;
+    font-size:.86rem;
+    color:var(--ink-soft);
+    font-style:italic;
+  }
+
+  @media (max-width:480px){
+    .hero{padding-block:48px 28px;}
+    section{padding-block:28px;}
+  }
+</style>
+
+<div class="wrap">
+
+  <div class="hero">
+    <svg class="hero-bg" viewBox="0 0 760 260" preserveAspectRatio="none" aria-hidden="true">
+      <circle cx="62" cy="40" r="1.1" fill="currentColor" opacity=".5"/>
+      <circle cx="140" cy="18" r="1.4" fill="currentColor" opacity=".4"/>
+      <circle cx="210" cy="52" r="1" fill="currentColor" opacity=".5"/>
+      <circle cx="300" cy="22" r="1.2" fill="currentColor" opacity=".35"/>
+      <circle cx="380" cy="60" r="1" fill="currentColor" opacity=".45"/>
+      <circle cx="460" cy="14" r="1.3" fill="currentColor" opacity=".4"/>
+      <circle cx="540" cy="48" r="1" fill="currentColor" opacity=".5"/>
+      <circle cx="620" cy="24" r="1.4" fill="currentColor" opacity=".4"/>
+      <circle cx="690" cy="56" r="1" fill="currentColor" opacity=".45"/>
+      <circle cx="30" cy="80" r=".8" fill="currentColor" opacity=".3"/>
+      <circle cx="260" cy="90" r=".9" fill="currentColor" opacity=".3"/>
+      <circle cx="520" cy="86" r=".9" fill="currentColor" opacity=".3"/>
+      <circle cx="730" cy="92" r=".8" fill="currentColor" opacity=".3"/>
+      <path d="M0,170 Q 60,150 130,165 T 270,160 T 410,172 T 550,158 T 690,168 L760,160 L760,260 L0,260 Z" fill="currentColor" opacity=".08"/>
+    </svg>
+    <div class="hero-inner">
+      <p class="eyebrow">Press &amp; Booking Kit — Updated October 2026</p>
+      <h1>Haltya &amp; EvsY</h1>
+      <p class="tagline">Two Finnish psytrance institutions — running since 1996 and 2000 — together for the first time on <em>Space Travellers</em>, out now on StereoHemia Records.</p>
+      <div class="linkrow">
+        <a href="https://stereohemia.bandcamp.com/album/space-travellers" target="_blank" rel="noopener">Bandcamp</a>
+        <span class="sep">·</span>
+        <a href="https://soundcloud.com/haltya-1" target="_blank" rel="noopener">SoundCloud</a>
+        <span class="sep">·</span>
+        <a href="https://www.facebook.com/share/18cthANUnP/" target="_blank" rel="noopener">Facebook</a>
+        <span class="sep">·</span>
+        <a href="https://www.discogs.com/artist/5324-Haltya" target="_blank" rel="noopener">Discogs</a>
+        <span class="sep">·</span>
+        <a href="mailto:haltya@gmail.com">Booking</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="short-bio">
+    <h2>Short bio</h2>
+    <p class="lede">Haltya is Tommi Sirkiä's pioneering Finnish psy-funk project, running since 1996 and a founding pillar of the Suomisaundi sound. Early support from BBC Radio 1's Annie Nightingale launched a catalogue spanning <em>Forest Flavour</em>, <em>Electric Help Elves</em>, and <em>Book of Nature</em>, with live sets played across Europe, the Americas, Japan, and Australia. Latest: <em>Space Travellers</em> (2025, StereoHemia Records), a full joint album with fellow Helsinki veterans EvsY.</p>
+  </section>
+
+  <section id="record">
+    <h2>Space Travellers</h2>
+    <div class="record-meta">
+      <span>StereoHemia Records</span>
+      <span>December 2025</span>
+      <span>Psytrance</span>
+      <span>9 tracks</span>
+    </div>
+    <p>Not a remix comp, not a legacy repackage — a genuine collaborative record. Tommi Sirkiä (Justin Space) and Julius Lehmuskallio (Eraser) wrote and produced it together, with Jürgen Sachau (Frank Further) and Simo Ojala (Yöjalka) both back in the room on additional production, bringing the full creative history of both acts into one body of work for the first time. Recorded at Box Studio, mastered by Mickey Noise, cover art by Kensuke Takahashi.</p>
+    <ol class="tracklist">
+      <li>Thunderbird</li>
+      <li>Bioflex</li>
+      <li>Starship Cosmos</li>
+      <li>Galaxy</li>
+      <li>Mantra</li>
+      <li>Pure Tone</li>
+      <li>Fractal Frenzy</li>
+      <li>Space Travellers</li>
+      <li>Solar System</li>
+    </ol>
+    <p class="credits-line">Composed &amp; produced — Justin Space, Eraser · Additional production — Frank Further, Yöjalka · Mastering — Mickey Noise · Artwork — Kensuke Takahashi</p>
+  </section>
+
+  <section id="achievements">
+    <h2>Selected credits</h2>
+    <p class="achieve">Early club support and radio play from <b>Annie Nightingale on BBC Radio 1</b> for Haltya's 1999/2000 debut. Via side project Headphonics, the single <b>"Kaikki tai ei mitään"</b> hit <b>#1 on Bassoradio's TOP-30</b> national chart for six consecutive weeks, with album tracks also placing inside the <b>top 10 of Beatport's Breaks chart</b>. Highpersonic Whomen's debut <i>Alternative Energysource</i> (2002) was named one of the best albums of its year by multiple trance critics.</p>
+  </section>
+
+  <section id="bios">
+    <h2>Artist biographies</h2>
+    <div class="bios">
+      <div class="bio">
+        <span class="bio-years">Haltya — est. 1996, Helsinki</span>
+        <h3>Haltya</h3>
+        <p>Built by Tommi Sirkiä and Jürgen Sachau, Haltya became one of the founding architects of Suomisaundi — the distinctly Finnish branch of psychedelic trance. Tommi (classically trained, backgrounds in rock, jazz, and music technology) and Jürgen (self-taught, instinct-driven) met in the middle: dense, groove-first psy-funk built on live guitars and horns laid into psychedelic production. Exogenic Records coined a term for it — "funky forest trance." Also called acid disco, acid funk, psy-funk.</p>
+        <p>Debut <i>Project/Haltya</i> 12" (1999/2000) picked up club support and BBC Radio 1 airplay. <i>Forest Flavour</i> (2000/01) and <i>Electric Help Elves</i> (2004, preceded by the single "Hero") followed. When Jürgen stepped back in 2005 to focus on Outolintu, Tommi carried Haltya forward as core producer — <i>Book of Nature</i> (2008) and <i>Japan Anime Punk Sessions EP</i> (2012) since. Three decades in, Haltya has played live and DJ sets in 18 countries, including Finland, Israel, Austria, Turkey, Russia, the USA, Japan, Brazil, Romania, Denmark, and Australia.</p>
+        <div class="side-project">
+          <span class="label">Side project — Highpersonic Whomen</span>
+          Tommi and Jürgen's club-facing progressive trance outlet, founded 2001. After Markku Louhio (Kiwa) joined, the sound pushed deeper and housey. Debut <i>Alternative Energysource</i> (2002) named a best-album-of-the-year by multiple trance critics; <i>Push the Limit</i> followed 2007.
+        </div>
+        <div class="side-project">
+          <span class="label">Side project — Headphonics</span>
+          Tommi's breakbeat vehicle with Markku Louhio, formed after meeting in Brazil. "Kaikki tai ei mitään" (Headphonics RMX), ft. rapper Tommi H, hit #1 on Bassoradio's TOP-30 for six weeks — a rare jump from psytrance underground to Finnish national radio.
+        </div>
+      </div>
+
+      <div class="bio">
+        <span class="bio-years">EvsY — est. 2000, Helsinki</span>
+        <h3>EvsY (Eraser vs Yöjalka)</h3>
+        <p>Julius Lehmuskallio and Simo Ojala, making psytrance since 2000 and still refusing to repeat themselves. Both classically trained, both drawn into the scene through Goa parties dating back to 1994, Eraser and Yöjalka built their sound on a shared conviction that psytrance should keep moving — pulling in heavy music, funk, and classical composition rather than settling into a formula.</p>
+        <p>Two albums and an EP on Helsinki's Exogenic Records, followed by a move to Australian label Faerie Dragon for <i>Lords of the Liverdance</i> (2006) and <i>Virtuosi di Quosi</i> (2009). EvsY's touring footprint runs Finland, Russia, Lithuania, Ukraine, Belgium, Israel, Turkey, Great Britain, Sweden, Denmark, Japan, and the USA — closely overlapping Haltya's own, no accident given two decades running parallel through the same Helsinki scene.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="touring">
+    <h2>Touring footprint</h2>
+    <p>Combined, Haltya and EvsY have played live and DJ sets across:</p>
+    <div class="tags">
+      <span class="tag">Finland</span><span class="tag">Israel</span><span class="tag">Austria</span>
+      <span class="tag">Turkey</span><span class="tag">Russia</span><span class="tag">USA</span>
+      <span class="tag">Japan</span><span class="tag">Brazil</span><span class="tag">Romania</span>
+      <span class="tag">Denmark</span><span class="tag">Australia</span><span class="tag">Lithuania</span>
+      <span class="tag">Ukraine</span><span class="tag">Belgium</span><span class="tag">UK</span>
+      <span class="tag">Sweden</span>
+    </div>
+  </section>
+
+  <section id="watch">
+    <h2>Watch</h2>
+    <div class="watch-list">
+      <div class="watch-item"><span class="watch-kind">Video</span><a href="https://www.instagram.com/reel/DOtPWEjDG02/" target="_blank" rel="noopener">Instagram reel — @haltya</a></div>
+      <div class="watch-item"><span class="watch-kind">Video</span><a href="https://www.instagram.com/reel/DR24yNzDDbN/" target="_blank" rel="noopener">Instagram reel — @haltya</a></div>
+      <div class="watch-item"><span class="watch-kind">Photo</span><a href="https://www.instagram.com/p/C9sIpk7Nepi/" target="_blank" rel="noopener">Instagram post — @haltya</a></div>
+      <div class="watch-item"><span class="watch-kind">Video</span><a href="https://www.instagram.com/reel/C9wPvN1t0lh/" target="_blank" rel="noopener">Instagram reel — @haltya</a></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="contact-card">
+      <h3>Booking &amp; press</h3>
+      <p style="margin-bottom:0;">Set length, technical rider, and fee available on request. Full-length live set built around <i>Space Travellers</i>.</p>
+      <div class="contact-row">
+        <span>Misaki Kageyama — Bookings</span>
+        <span><a href="mailto:haltya@gmail.com">haltya@gmail.com</a></span>
+      </div>
+      <p class="note">Press photos, logo files, and a full technical rider are in preparation — contact us directly in the meantime and we'll send what's needed.</p>
+    </div>
+  </footer>
+
+</div>
